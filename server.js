@@ -11,7 +11,7 @@ console.log("node server started");
 app.post('/webhook/order', async (req, res) => {
   try {
     const order = req.body;
-    console.log("webhook starting..", order);
+    console.log("webhook starting..");
 
     // Format the order to fixed-width string
     const content = formatOrder(order);
