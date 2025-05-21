@@ -12,7 +12,7 @@ console.log("node server started port", process.env.PORT);
 app.post('/webhook/order', async (req, res) => {
   try {
     const order = req.body;
-    console.log("webhook starting..");
+    console.log("webhook starting..", order);
 
     // Format the order to fixed-width string
     const content = formatOrder(order);
