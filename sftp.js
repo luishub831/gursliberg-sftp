@@ -5,6 +5,8 @@ const sftp = new Client();
 
 exports.upload = async function (localPath, remotePath) {
   console.log("uploading starting-", process.env.SFTP_USER);
+  console.log("localpath-", localPath);
+  console.log("remotePath-", remotePath);
   await sftp.connect({
     host: process.env.SFTP_HOST,
     port: parseInt(process.env.SFTP_PORT),
