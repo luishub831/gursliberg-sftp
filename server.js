@@ -6,7 +6,7 @@ const formatOrder = require('./formatter');
 
 const app = express();
 app.use(bodyParser.json());
-console.log("node server started");
+console.log("node server started", process.env.SFTP_USER);
 
 app.post('/webhook/order', async (req, res) => {
   try {
