@@ -4,9 +4,10 @@ const fs = require('fs');
 const sftp = require('./sftp');
 const formatOrder = require('./formatter');
 
+const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(bodyParser.json());
-console.log("node server started", process.env.SFTP_USER);
+console.log("node server started port", process.env.PORT);
 
 app.post('/webhook/order', async (req, res) => {
   try {
@@ -30,4 +31,6 @@ app.post('/webhook/order', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('🚀 Server running on port 3000'));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
