@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.post('/webhook/order', async (req, res) => {
   try {
     const order = req.body;
+    console.log("webhook starting..", order);
 
     // Format the order to fixed-width string
     const content = formatOrder(order);
