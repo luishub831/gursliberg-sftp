@@ -18,11 +18,11 @@ app.post('/webhook/order', async (req, res) => {
     const content = formatOrder(order);
 
     // Save to file
-    const filePath = `./order-${order.id}.txt`;
+    const filePath = `./${order.order_number}_Ordrefil_Forlaget.txt`;
     fs.writeFileSync(filePath, content);
 
     // Upload to SFTP
-    await sftp.upload(filePath, `/www/order-${order.id}.txt`);
+    await sftp.upload(filePath, `/www/${order.order_number}_Ordrefil_Forlaget.txt`);
 
     res.status(200).send('✅ Order received and processed.');
   } catch (err) {
