@@ -7,7 +7,7 @@ function pad(value, length, alignRight = false) {
 module.exports = function formatOrder(order) {
   const FN1 = [
     pad(`FN1${order.order_number}`, 20),                           // FN1_RecType (3)
-    pad(order.customer.id, 20, true),        // FN1_OrderNo (20)
+    pad(order.customer.id, 20),        // FN1_OrderNo (20)
     pad(order.customer?.first_name, 50),  // FN1_DelName
     pad(order.shipping_address?.address1, 50),
     pad(order.shipping_address?.address2 || '', 50),
