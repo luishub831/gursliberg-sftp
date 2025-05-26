@@ -6,7 +6,7 @@ function pad(value, length, alignRight = false) {
 
 module.exports = function formatOrder(order) {
   const FN1 = [
-    `FN1${order.order_number}`,                           // FN1_RecType (3)
+    pad(`FN1${order.order_number}`, 20),                           // FN1_RecType (3)
     pad(order.customer.id, 20, true),        // FN1_OrderNo (20)
     pad(order.customer?.first_name, 50),  // FN1_DelName
     pad(order.shipping_address?.address1, 50),
@@ -28,10 +28,10 @@ module.exports = function formatOrder(order) {
   ];
 
   const FN2 = order.line_items.map((item, index) => [
-    `FN2${order.order_number}`,                                   // FN2_RecType
+    pad(`FN2${order.order_number}`, 20),                                   // FN2_RecType
     // pad(order.customer.id, 20, true),                // FN2_OrderNo
     // pad(item.sku || '', 8),                 // FN2_ArticleNo
-    pad(item.sku || '', 21, true),                // FN2_ItemNumber (EAN)
+    pad(item.sku || '', 21),                // FN2_ItemNumber (EAN)
     pad(item.name, 80),                    // FN2_ItemName
     pad(item.quantity, 5, true),            // FN2_Qty
     pad(index + 1, 5, true),                             // <-- Add index (1-based)
