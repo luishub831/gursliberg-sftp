@@ -30,15 +30,15 @@ module.exports = function formatOrder(order) {
 
   const FN2 = order.line_items.map((item, index) => [
     `FN2`,                                                  // FN2_RecType (fixed value "FN2")
-    pad(order.order_number, 20, true),                      // FN2_OrderNo (Invoice/order number)
+    pad(order.order_number, 20),                      // FN2_OrderNo (Invoice/order number)
     pad(item.product_id || '', 8),                                 // FN2_ArticleNo (internal item number)
     pad(item.sku || '', 21),                                // FN2_ItemNumber (EAN)
     pad(item.title || '', 80),                              // FN2_ItemName (product name)
-    pad(item.quantity, 9, true),                            // FN2_DelNumber (number of items to deliver)
-    pad(index + 1, 3, true),                                // FN2_LineNumber (line number, starting at 1)
+    pad(item.quantity, 9),                            // FN2_DelNumber (number of items to deliver)
+    pad(index + 1, 3),                                // FN2_LineNumber (line number, starting at 1)
     pad('1', 1),                                             // FN2_PickableItem (1 = pickable, or blank)
     pad('OWNER', 6),                                        // FN2_ItemOwner (you can customize this)
-    pad(item.price, 8, true),                               // FN2_Price (sales price)
+    pad(item.price, 8),                               // FN2_Price (sales price)
     pad('N/A', 20),                                            // FN2_LineRef (line reference, optional/blank)
   ].join('')).join('\n');
 
