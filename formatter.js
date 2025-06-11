@@ -21,8 +21,8 @@ module.exports = function formatOrder(order) {
     pad(order.phone || '', 12),     //"FN1_DelCustMobil(12)" 
     pad(order.total_weight, 12),                    // FN1_TotalWeight(12)
     pad('8999869', 20),                    // FN1_ShopID
-    pad('', 1),                    // FN1_DeliveryMode
-    pad('', 1),                    // FN1_PickupPoint
+    pad('', 12),                    // FN1_DeliveryMode
+    pad('', 48),                    // FN1_PickupPoint
     pad('NGBF', 10),                    // FN1_ClubID
     pad('0', 1),                    // FN1_CustType (0 = private)
     pad('0', 1),                    // FN1_AddrType (0 = street)
