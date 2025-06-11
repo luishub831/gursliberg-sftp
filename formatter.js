@@ -32,7 +32,7 @@ module.exports = function formatOrder(order) {
     `FN2`,                                                  // FN2_RecType (fixed value "FN2")
     pad(order.order_number, 20),                      // FN2_OrderNo (Invoice/order number)
     // pad(item.product_id || '', 8),                                 // FN2_ArticleNo (internal item number)
-    pad('', 8),                                 // FN2_ArticleNo (internal item number)
+    pad('', 8),                                  // FN2_ArticleNo (internal item number)
     pad(item.sku || '', 21),                                // FN2_ItemNumber (EAN)
     pad(item.title || '', 80),                              // FN2_ItemName (product name)
     pad(item.quantity, 9),                            // FN2_DelNumber (number of items to deliver)
