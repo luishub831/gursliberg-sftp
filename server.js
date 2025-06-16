@@ -24,7 +24,7 @@ app.post('/webhook/order', async (req, res) => {
     // Upload to SFTP
     let remotePath = `/${process.env.REMOTE_FOLDER}/${order.order_number}_Ordrefil_Forlaget.txt`;
     console.log("Uploading to SFTP:", remotePath);
-    await sftp.upload(filePath, `/www/${order.order_number}_Ordrefil_Forlaget.txt`);
+    await sftp.upload(filePath, remotePath);
 
     res.status(200).send('✅ Order received and processed.');
   } catch (err) {
