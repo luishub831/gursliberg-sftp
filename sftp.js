@@ -12,6 +12,14 @@ exports.upload = async function (localPath, remotePath) {
     port: parseInt(process.env.SFTP_PORT),
     username: process.env.SFTP_USER,
     password: process.env.SFTP_PASS,
+    algorithms: {
+      kex: [
+        'diffie-hellman-group14-sha1',
+        'diffie-hellman-group-exchange-sha256',
+        'diffie-hellman-group-exchange-sha1',
+        'diffie-hellman-group1-sha1'
+      ]
+    }
   });
 
   await sftp.put(localPath, remotePath);
