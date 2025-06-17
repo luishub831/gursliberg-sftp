@@ -18,11 +18,12 @@ app.post('/webhook/order', async (req, res) => {
     const content = formatOrder(order);
 
     // Save to file
-    const filePath = `./${order.order_number}_Ordrefil_Forlaget.txt`;
+    const date = new Date().toISOString().slice(0, 10).replace(/-/g, '.');
+    const filePath = `./N8999869.Gursliberg.${date}.${order.order_number}.txt`;
     fs.writeFileSync(filePath, content);
 
     // Upload to SFTP
-    let remotePath = `/${process.env.REMOTE_FOLDER}/${order.order_number}_Ordrefil_Forlaget.txt`;
+    let remotePath = `/${process.env.REMOTE_FOLDER}/${filePath}`;
     console.log("Uploading to SFTP:", remotePath);
     await sftp.upload(filePath, remotePath);
 

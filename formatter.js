@@ -9,7 +9,7 @@ module.exports = function formatOrder(order) {
     pad(`FN1`, 3),                           // FN1_RecType (3)
     pad(`${order.order_number}`, 20),        // FN1_OrderNo (20)
     pad(order.customer.id, 20),        // FN1_DelCustNo (20)
-    pad(order.customer?.first_name, 50),  // FN1_DelName
+    pad(order.customer?.first_name + ' '+ order.customer?.last_name, 50),  // FN1_DelName
     pad(order.shipping_address?.address1, 50),   //"FN1_DelAdd1(50)"
     pad(order.shipping_address?.address2 || '', 50),  //"FN1_DelAdd2(50)"
     pad(order.shipping_address?.zip, 10),    //"FN1_DelZipCode(10)"
